@@ -1,1 +1,93 @@
+/* Основной стиль для всего документа */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+        }
 
+        /* Контейнер калькулятора */
+        .calculator-container {
+            width: 320px;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Экран калькулятора для отображения результата */
+        .display {
+            background-color: #333;
+            color: white;
+            font-size: 2em;
+            text-align: right;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        /* Стили для формы, которая содержит кнопки и поля ввода */
+        .calculator-form {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        /* Стиль для кнопок и полей ввода */
+        .calculator-button,
+        .calculator-input {
+            font-size: 1.5em;
+            padding: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        /* Стили для числовых кнопок */
+        .number-button {
+            background-color: #4a4a4a;
+            color: white;
+        }
+
+        /* Стили для кнопок операций */
+        .operation-button {
+            background-color: #2d89ef;
+            color: white;
+        }
+
+        /* Стиль для кнопки "равно" */
+        .equal-button {
+            background-color: #1e8c1e;
+            color: white;
+            grid-column: span 2;
+        }
+
+        /* При наведении мыши */
+        .calculator-button:hover {
+            background-color: #555;
+        }
+
+        /* Стили для кнопок, полей ввода и кнопки сброса */
+        input[type="text"],
+        select,
+        .calculator-input,
+        .clear-button {
+            grid-column: span 4;
+            background-color: #1e1e1e;
+            color: white;
+            border: 1px solid #333;
+            font-size: 1.2em;
+        }
+
+        /* Стиль ошибки */
+        .error {
+            color: #f44336;
+            text-align: center;
+            margin-top: 10px;
+        }

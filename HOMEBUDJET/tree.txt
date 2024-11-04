@@ -1,0 +1,26 @@
+home-accounting/
+├── .htaccess
+├── database.php
+├── public/
+│   ├── index.php
+│   ├── css/
+│   └── js/
+├── controllers/
+│   ├── AuthController.php
+│   ├── TransactionController.php
+│   └── CategoryController.php
+├── models/
+│   ├── User.php
+│   ├── Transaction.php
+│   └── Category.php
+└── views/
+    ├── auth/
+    │   ├── login.php
+    │   └── register.php
+    ├── transactions/
+    │   ├── history.php
+    │   ├── create.php
+    │   └── chart.php
+    ├── categories/
+    │   └── create.php
+    └── home.php

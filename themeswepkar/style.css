@@ -1,0 +1,368 @@
+/*
+Theme Name: ThemesWepKar
+Theme URI: http://example.com/themeswepkar
+Author: Your Name
+Author URI: http://example.com
+Description: A responsive WordPress theme.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: responsive, custom-background, custom-header
+Text Domain: themeswepkar
+*/
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход для фона и цвета текста */
+}
+
+/* Стили по умолчанию (светлая тема) */
+header {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход для заголовка */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Равномерное распределение пространства между блоками */
+    align-items: center; /* Выравнивание по вертикали */
+}
+
+.header-left,
+.header-center,
+.header-right {
+    flex: 0 0 auto; /* Устанавливаем фиксированную ширину для блоков */
+}
+
+.header-left {
+    flex: 2; /* 2 части (бургер-меню) */
+    display: flex;
+}
+
+.header-center {
+    flex: 8; /* 8 частей (центр с логотипом) */
+    text-align: center; /* Центрируем содержимое */
+}
+
+.header-right {
+    flex: 2; /* 2 части (пустое место справа) */
+}
+
+.burger-button {
+    font-size: 24px; /* Размер шрифта для кнопки-бургера */
+    background: none; /* Без фона */
+    border: none; /* Без границы */
+    color: #fff; /* Цвет текста */
+    cursor: pointer; /* Курсор в виде указателя */
+}
+
+.horizontal-menu {
+    background: #444; /* Цвет фона меню */
+    padding: 10px 0; /* Отступы сверху и снизу */
+    transition: background-color 0.3s ease; /* Плавный переход для фона меню */
+}
+
+.primary-menu {
+    list-style: none; /* Убираем маркеры списка */
+    padding: 0; /* Убираем внутренние отступы */
+    margin: 0; /* Убираем внешние отступы */
+    display: flex; /* Используем Flexbox для горизонтального расположения */
+    justify-content: center; /* Центрируем элементы */
+}
+
+.primary-menu li {
+    position: relative; /* Устанавливаем относительное позиционирование для подменю */
+    margin: 0 15px; /* Отступы между элементами */
+}
+
+.primary-menu a {
+    color: #fff; /* Цвет текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    padding: 10px 15px; /* Добавляем отступы для кнопок меню */
+}
+
+.primary-menu a:hover {
+    background-color: #555; /* Цвет фона при наведении */
+}
+
+/* Стили для подменю */
+.primary-menu ul {
+    display: none; /* Скрываем подменю по умолчанию */
+    position: absolute; /* Позволяет позиционировать подменю относительно родителя */
+    background-color: #444; /* Цвет фона подменю */
+    padding: 10px 0; /* Отступы подменю */
+    list-style: none; /* Убираем маркеры списка */
+    z-index: 1000; /* Устанавливаем выше остальных элементов */
+}
+
+.primary-menu li:hover > ul {
+    display: block; /* Показываем подменю при наведении */
+}
+
+/* Показываем подменю, когда добавлен класс 'show' */
+.primary-menu ul.show {
+    display: block; /* Показываем подменю при добавлении класса show */
+}
+
+.sidebar-menu {
+    position: fixed; /* Фиксированное позиционирование */
+    top: 0;
+    left: -300px; /* Начальная позиция скрыта за экраном */
+    width: 250px; /* Ширина бокового меню */
+    height: 100%; /* Высота на весь экран */
+    background: #444; /* Цвет фона */
+    transition: left 0.3s ease; /* Анимация для открытия/закрытия */
+    z-index: 1000; /* Расположение над другими элементами */
+    padding: 20px; /* Внутренние отступы */
+}
+
+.sidebar-menu.open {
+    left: 0; /* Меню открывается на экран */
+}
+
+.close-button {
+    background: none; /* Без фона */
+    border: none; /* Без границы */
+    color: #fff; /* Цвет текста */
+    font-size: 24px; /* Размер шрифта */
+    cursor: pointer; /* Курсор в виде указателя */
+    position: absolute; /* Позиционирование относительно родителя */
+    top: 10px; /* Отступ сверху */
+    right: 10px; /* Отступ справа */
+}
+
+.post-thumbnail {
+    margin-bottom: 15px; /* Отступ под миниатюрой */
+}
+
+/* Стили для живого поиска */
+.live-search {
+    display: flex; /* Изменяем на flex для десктопной версии */
+    align-items: center; /* Центрируем поиск по вертикали */
+}
+#search-input {
+    padding: 8px; /* Отступы внутри поля ввода */
+    border: 1px solid #ccc; /* Граница поля ввода */
+    border-radius: 4px; /* Закругление углов */
+}
+
+.search-results {
+    position: absolute; /* Абсолютное позиционирование для результатов поиска */
+    top: 100%; /* Положение сразу под полем ввода */
+    left: 0;
+    right: 0; /* Выравниваем по ширине */
+    background: #fff; /* Цвет фона результатов */
+    border: 1px solid #ccc; /* Граница результатов */
+    z-index: 1000; /* Убедимся, что результаты выше других элементов */
+    display: none; /* Скрываем результаты по умолчанию */
+}
+
+.search-results.active {
+    display: block; /* Показываем результаты при наличии данных */
+}
+
+.search-results a {
+    display: block; /* Каждый результат занимает отдельную строку */
+    padding: 10px; /* Отступы внутри результата */
+    text-decoration: none; /* Убираем подчеркивание */
+    color: #333; /* Цвет текста */
+}
+
+.search-results a:hover {
+    background: #f0f0f0; /* Цвет фона при наведении */
+}
+
+/* Стили для темной темы */
+body.dark-theme {
+    background-color: #121212; /* Цвет фона для темной темы */
+    color: #e0e0e0; /* Цвет текста для темной темы */
+}
+
+header.dark-theme {
+    background: #1e1e1e; /* Цвет фона заголовка для темной темы */
+    color: #e0e0e0; /* Цвет текста для заголовка в темной теме */
+}
+
+.horizontal-menu.dark-theme {
+    background: #222; /* Цвет фона меню для темной темы */
+}
+
+.primary-menu a.dark-theme {
+    color: #e0e0e0; /* Цвет текста для меню в темной теме */
+}
+
+/* Стили для футера */
+footer {
+    background: #333; /* Цвет фона футера по умолчанию */
+    color: #fff; /* Цвет текста футера по умолчанию */
+    padding: 20px;
+    text-align: center; /* Центрируем текст футера */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход для футера */
+}
+
+/* Стили для темной темы футера */
+footer.dark-theme {
+    background-color: #121212; /* Цвет фона для темной темы футера */
+    color: #e0e0e0; /* Цвет текста для темной темы футера */
+}
+
+/* Стили для светлой темы футера */
+footer.light-theme {
+    background-color: #333; /* Цвет фона для светлой темы футера */
+    color: #ffffff; /* Цвет текста для светлой темы футера */
+}
+.theme-toggle {
+    display: flex; /* Используем flex для выравнивания кнопок */
+    align-items: center; /* Выравнивание по вертикали */
+}
+
+.theme-icon {
+    background: none; /* Без фона */
+    border: none; /* Без границы */
+    color: #fff; /* Цвет текста */
+    cursor: pointer; /* Курсор в виде указателя */
+    margin-left: 10px; /* Отступ между кнопками */
+}
+.breadcrumbs {
+    padding: 10px 0;
+    font-size: 14px;
+    color: #555;
+    padding: 25px;
+}
+
+.breadcrumbs a {
+    text-decoration: none;
+    color: #0073aa;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+.main-content {
+    display: flex; /* Используем Flexbox для размещения блоков */
+    justify-content: space-between; /* Распределяем пространство между блоками */
+    padding: 20px; /* Отступы для всего блока */
+}
+
+.main-block {
+    flex: 0 0 66.67%; /* 8 частей из 12 (8/12 * 100%) */
+    padding: 20px; /* Отступы для основного блока */
+    background-color: #f9f9f9; /* Цвет фона для основного блока */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Небольшая тень для блока */
+}
+
+.sidebar {
+    /*flex: 0 0 33.33%; /* 4 части из 12 (4/12 * 100%) */
+    padding: 20px; /* Отступы для бокового блока */
+    background-color: #ececec; /* Цвет фона для бокового блока */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Небольшая тень для бокового блока */
+}
+.recent-posts {
+    list-style: none; /* Убираем маркеры списка */
+    padding: 0; /* Убираем отступы */
+    margin: 0; /* Убираем внешние отступы */
+}
+
+.recent-post {
+    display: flex; /* Используем Flexbox для размещения миниатюры и текста */
+    margin-bottom: 15px; /* Отступы между постами */
+}
+
+.recent-post-thumbnail {
+    margin-right: 10px; /* Отступ между миниатюрой и текстом */
+}
+
+.recent-post-thumbnail img {
+    width: 60px; /* Ширина миниатюры */
+    height: auto; /* Автоматическая высота */
+}
+
+.recent-post-content h3 {
+    font-size: 1rem; /* Размер заголовка поста */
+    margin: 0; /* Убираем отступы */
+}
+
+.recent-post-content p {
+    font-size: 0.9rem; /* Размер текста описания */
+    margin: 0; /* Убираем отступы */
+}
+.post-date {
+    display: block;
+    font-size: 0.9em; /* Размер шрифта */
+    color: #666; /* Цвет текста */
+}
+/* Ограничиваем ширину изображений в постах */
+.single-post img {
+    max-width: 100%;  /* Ограничиваем ширину до 100% контейнера */
+    height: auto;     /* Поддерживаем пропорции изображения */
+}
+@media (max-width: 768px) {
+    .horizontal-menu {
+        display: none; /* Скрываем горизонтальное меню на мобильных устройствах */
+    }
+
+    .header-left {
+        text-align: center; /* Центрирование элементов в шапке */
+    }
+
+    .header-right {
+        display: none; /* Скрываем блок поиска на мобильной версии */
+    }
+
+    .live-search {
+        width: 100%; /* Полная ширина для мобильной версии */
+        margin-top: 10px; /* Отступ сверху для формы поиска */
+    }
+
+    .header-center {
+        flex-direction: column; /* Устанавливаем вертикальное расположение для мобильной версии */
+        align-items: flex-start; /* Выравнивание по левому краю */
+    }
+}
+@media (max-width: 768px) {
+    .main-content {
+        display: flex; /* Используем flexbox для размещения контента */
+        flex-direction: column; /* Размещаем элементы в колонку */
+    }
+
+
+    .sidebar-menu {
+        display: none; /* Скрываем сайдбар на мобильных устройствах */
+    }
+}
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px; /* Отступ от нижней части */
+    right: 20px; /* Отступ от правой стороны */
+    background-color: #0073aa; /* Цвет фона */
+    color: white; /* Цвет текста */
+    padding: 10px 15px; /* Отступы */
+    border-radius: 5px; /* Скругление углов */
+    text-align: center; /* Выравнивание текста по центру */
+    text-decoration: none; /* Убираем подчеркивание */
+    font-size: 18px; /* Размер шрифта */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+.scroll-to-top:hover {
+    background-color: #005177; /* Цвет фона при наведении */
+}
+@media (max-width: 768px) {
+    .live-search {
+        display: block; /* Отображаем блок поиска на мобильной версии */
+        margin-top: 10px; /* Устанавливаем отступ сверху для лучшего внешнего вида */
+    }
+}
+.sidebar-primary-menu .sub-menu {
+    display: none; /* Скрываем подменю по умолчанию */
+}
+
+.sidebar-primary-menu .sub-menu.show {
+    display: block; /* Показываем подменю при наличии класса 'show' */
+    padding-left: 20px; /* Добавляем отступ для подменю */
+}
+
